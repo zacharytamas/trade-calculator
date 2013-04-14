@@ -4,7 +4,7 @@
   window.Calculator = function($scope) {
     $scope.earnings_dollar = 0.00;
     $scope.earnings_percent = 0.00;
-    $scope.share_count = "500";
+    $scope.share_count = "1000";
     $scope.price_purchase = "3.39";
     $scope.price_sell = "3.48";
     $scope.commission = "4.95";
