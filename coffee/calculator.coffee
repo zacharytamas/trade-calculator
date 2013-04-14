@@ -2,16 +2,16 @@
 window.Calculator = ($scope) ->
     $scope.earnings_dollar  = 0.00
     $scope.earnings_percent = 0.00
-    $scope.share_count = 0
-    $scope.price_purchase = 0.00
-    $scope.price_sell = 0.00
-    $scope.commission = 0.00
+    $scope.share_count = "500"
+    $scope.price_purchase = "3.39"
+    $scope.price_sell = "3.48"
+    $scope.commission = "4.95"
 
     $scope.normalize = ->
         out = {}
         for prop in ['share_count', 'price_purchase', 'price_sell', 'commission']
-            val = $scope[prop]
-            num = if val[0] == '$' then parseFloat(val.substr(1)) else parseFloat(val)
+            val = $scope[prop].replace "$", ""
+            num = parseFloat val
             control_group = $("input[name='#{prop}']").parent()
 
             if isNaN(num)
@@ -27,8 +27,7 @@ window.Calculator = ($scope) ->
         props = $scope.normalize()
         
         # If there were normalization problems, don't bother calculating.
-        if not props
-            return
+        return unless props
 
         initial_share_value = props.share_count * props.price_purchase
         cost_basis          = initial_share_value + props.commission
@@ -42,3 +41,5 @@ window.Calculator = ($scope) ->
             $("#display").addClass "loss"
         else
             $("#display").removeClass "loss"
+
+    $scope.recalculate()

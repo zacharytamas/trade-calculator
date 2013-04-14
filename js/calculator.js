@@ -4,18 +4,18 @@
   window.Calculator = function($scope) {
     $scope.earnings_dollar = 0.00;
     $scope.earnings_percent = 0.00;
-    $scope.share_count = 0;
-    $scope.price_purchase = 0.00;
-    $scope.price_sell = 0.00;
-    $scope.commission = 0.00;
+    $scope.share_count = "500";
+    $scope.price_purchase = "3.39";
+    $scope.price_sell = "3.48";
+    $scope.commission = "4.95";
     $scope.normalize = function() {
       var control_group, num, out, prop, val, _i, _len, _ref;
       out = {};
       _ref = ['share_count', 'price_purchase', 'price_sell', 'commission'];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         prop = _ref[_i];
-        val = $scope[prop];
-        num = val[0] === '$' ? parseFloat(val.substr(1)) : parseFloat(val);
+        val = $scope[prop].replace("$", "");
+        num = parseFloat(val);
         control_group = $("input[name='" + prop + "']").parent();
         if (isNaN(num)) {
           control_group.addClass("error");
@@ -27,7 +27,7 @@
       }
       return out;
     };
-    return $scope.recalculate = function() {
+    $scope.recalculate = function() {
       var cost_basis, initial_share_value, proceeds, props, trade_return;
       props = $scope.normalize();
       if (!props) {
@@ -45,6 +45,7 @@
         return $("#display").removeClass("loss");
       }
     };
+    return $scope.recalculate();
   };
 
 }).call(this);
