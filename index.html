@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>zacharytamas.com | Trade Calculator</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/flat-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/calculator.css">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/calculator.js"></script>
+    
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="span4 offset1">
+
+          <div id="calculator" ng-controller="Calculator">
+            <div id="display">
+              {{ earnings_dollar|currency }} <span class="percent">{{ earnings_percent|number:2 }}%</span>
+            </div>
+
+            <form class="form-horizontal">
+
+              <div class="control-group">
+                <label class="control-label">Shares</label>
+                <div class="controls">
+                  <input type="text" name="shares" ng-model="share_count" ng-change="recalculate()">
+                </div>
+              </div>
+                
+              <div class="control-group">
+                <label class="control-label">Buy Price</label>
+                <div class="controls">
+                  <input type="text" name="price_purchase" ng:format="currency" ng-model="price_purchase" ng-change="recalculate()">
+                </div>
+              </div>
+        
+              <div class="control-group">
+                <label class="control-label">Sell Price</label>
+                <div class="controls">
+                  <input type="text" name="price_sell" ng-model="price_sell" ng-change="recalculate()">
+                </div>
+              </div>
+                
+              <div class="control-group">
+                <label class="control-label">Commission</label>
+                <div class="controls">
+                  <input type="text" name="commission" ng-model="commission" ng-change="recalculate()">
+                </div>
+              </div>
+              
+            </form>
+          </div>
+
+        </div>
+        <div class="span6 offset1 copy">
+
+          <h1>Stock Trade Calculator</h1>
+
+          <p class="lead">A calculator for determining the outcome of stock&nbsp;trades.</p>
+          <hr>
+          <h4>Points of interest:</h4>
+
+          <ul>
+            <li>Created using AngularJS as my "Hello World" application.</li>
+            <li>Utilized AngularJS's data binding and event-handling to provide live calculation as inputs change.</li>
+            <li>Implemented front-end using CoffeeScript and Less.</li>
+            <li>Flat design implemented using modern CSS3.</li>
+          </ul>
+
+          <br>
+
+          <p class="lead">
+            This little experiment was created by <br><a href="http://www.zacharytamas.com/">Zachary Jones</a>. More at the <a href="http://zacharytamas.com/playground/">Playground</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
