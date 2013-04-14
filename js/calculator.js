@@ -39,11 +39,7 @@
       trade_return = proceeds - cost_basis;
       $scope.earnings_dollar = trade_return;
       $scope.earnings_percent = trade_return / cost_basis * 100;
-      if ($scope.earnings_dollar < 0) {
-        return $("#display").addClass("loss");
-      } else {
-        return $("#display").removeClass("loss");
-      }
+      return $scope.return_type = $scope.earnings_dollar < 0 ? "loss" : "gain";
     };
     return $scope.recalculate();
   };

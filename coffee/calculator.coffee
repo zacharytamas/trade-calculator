@@ -36,10 +36,7 @@ window.Calculator = ($scope) ->
         
         $scope.earnings_dollar  = trade_return
         $scope.earnings_percent = trade_return / cost_basis * 100
+        $scope.return_type = if $scope.earnings_dollar < 0 then "loss" else "gain"
 
-        if $scope.earnings_dollar < 0
-            $("#display").addClass "loss"
-        else
-            $("#display").removeClass "loss"
 
     $scope.recalculate()

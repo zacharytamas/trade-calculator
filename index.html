@@ -21,7 +21,7 @@
         <div class="span4 offset1">
 
           <div id="calculator" ng-controller="Calculator">
-            <div id="display">
+            <div id="display" class="{{ return_type }}">
               {{ earnings_dollar|currency }} <span class="percent">{{ earnings_percent|number:2 }}%</span>
             </div>
 
